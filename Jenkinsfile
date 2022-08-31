@@ -1,5 +1,4 @@
 @Library('mylibrary')_
-
 node('built-in')
 {
     stage('ContinuousDownload_master')
@@ -9,18 +8,5 @@ node('built-in')
     stage('ContinuousBuild_master')
     {
        cicd.newbuild()
-    }
-    stage('ContinuousDeployment_master')
-    {
-       cicd.newdeploy("Scriptedpipeline-SharedLibrary01","172.31.12.130","t02app")
-    }
-    stage('ContinuousTesting_master')
-    {
-       cicd.newgit("https://github.com/intelliqittrainings/FunctionalTesting.git")
-       cicd.newtest("Scriptedpipeline-SharedLibrary01")
-    }
-    stage('ContinuousDelivery_master')
-    {
-            cicd.newdeploy("Scriptedpipeline-SharedLibrary01","172.31.11.122","p02app")
     }
 }
